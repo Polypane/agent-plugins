@@ -42,11 +42,16 @@ jobs:
       - name: Create the release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/polypane.mcpb server.json --title "Agent plugins for Polypane $GITHUB_REF_NAME" --generate-notes
+        # Re-running the workflow for the same tag replaces the files of the existing release.
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/polypane.mcpb server.json --title "Agent plugins for Polypane $GITHUB_REF_NAME" --generate-notes ||
+            gh release upload "$GITHUB_REF_NAME" dist/polypane.mcpb server.json --clobber
 
       - name: Publish to the MCP Registry
         if: vars.PUBLISH_TO_MCP_REGISTRY == 'true'
+        env:
+          MCP_PRIVATE_KEY: ${{ secrets.MCP_PRIVATE_KEY }}
         run: |
           curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
-          ./mcp-publisher login dns --domain polypane.app --private-key "${{ secrets.MCP_REGISTRY_PRIVATE_KEY }}"
+          ./mcp-publisher login dns --domain polypane.app
           ./mcp-publisher publish
