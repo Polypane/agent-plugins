@@ -1,0 +1,20 @@
+{
+  "name": "polypane",
+  "interface": {
+    "displayName": "Polypane"
+  },
+  "plugins": [
+    {
+      "name": "polypane",
+      "source": {
+        "source": "local",
+        "path": "./plugins/polypane"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

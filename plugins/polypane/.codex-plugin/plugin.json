@@ -1,0 +1,45 @@
+{
+  "name": "polypane",
+  "version": "32.0.0",
+  "description": "Build, check and fix websites in Polypane, the browser for web developers: every viewport at once, with its accessibility, layout, meta and performance checks. Needs Polypane, which has a free trial.",
+  "author": {
+    "name": "Polypane",
+    "email": "support@polypane.app",
+    "url": "https://polypane.app"
+  },
+  "homepage": "https://polypane.app/docs/automation/",
+  "repository": "https://github.com/Polypane/agent-plugins.git",
+  "license": "MIT",
+  "keywords": [
+    "polypane",
+    "browser",
+    "responsive",
+    "accessibility",
+    "testing",
+    "web-development",
+    "mcp"
+  ],
+  "mcpServers": "./mcp.codex.json",
+  "interface": {
+    "displayName": "Polypane",
+    "shortDescription": "Check and fix websites in every viewport at once.",
+    "longDescription": "Polypane is a browser for web developers that shows one page in many viewports at once. With this plugin, Codex works in your Polypane: it opens your local site, runs Polypane's accessibility, layout, meta and performance checks in every pane, tries CSS changes live, and checks its fixes, while you watch.",
+    "developerName": "Polypane",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://polypane.app",
+    "privacyPolicyURL": "https://polypane.app/privacy/",
+    "brandColor": "#2B6CB0",
+    "composerIcon": "./assets/logo.svg",
+    "logo": "./assets/logo.svg",
+    "defaultPrompt": [
+      "Open my local site in Polypane and fix the accessibility issues its report finds",
+      "The header overlaps the content on small screens. Find out why in Polypane and fix it",
+      "Check this page in Polypane before I ship it"
+    ],
+    "screenshots": []
+  }
+}

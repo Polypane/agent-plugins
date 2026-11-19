@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "app.polypane/polypane",
+  "title": "Polypane",
+  "description": "Build, check and fix websites in Polypane: every viewport at once, with accessibility, layout and meta checks.",
+  "websiteUrl": "https://polypane.app/docs/automation/",
+  "version": "32.0.0",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/Polypane/agent-plugins/releases/download/v32.0.0/polypane.mcpb",
+      "fileSha256": "TO-BE-FILLED-BY-THE-RELEASE",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

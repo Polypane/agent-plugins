@@ -1,0 +1,22 @@
+{
+  "name": "polypane",
+  "version": "32.0.0",
+  "description": "Build, check and fix websites in Polypane, the browser for web developers: every viewport at once, with its accessibility, layout, meta and performance checks. Needs Polypane, which has a free trial.",
+  "author": {
+    "name": "Polypane",
+    "email": "support@polypane.app"
+  },
+  "homepage": "https://polypane.app/docs/automation/",
+  "repository": "https://github.com/Polypane/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "polypane",
+    "browser",
+    "responsive",
+    "accessibility",
+    "testing",
+    "web-development",
+    "mcp"
+  ],
+  "mcpServers": "./mcp.claude.json"
+}

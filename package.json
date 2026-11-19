@@ -1,0 +1,10 @@
+{
+  "name": "polypane-agent-plugins",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync-skill": "node scripts/sync-skill.mjs",
+    "validate": "node scripts/validate.mjs",
+    "pack": "node scripts/validate.mjs && npx -y @anthropic-ai/mcpb pack claude-desktop dist/polypane.mcpb"
+  }
+}

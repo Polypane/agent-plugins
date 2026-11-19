@@ -1,0 +1,18 @@
+{
+  "name": "polypane",
+  "owner": {
+    "name": "Polypane",
+    "email": "support@polypane.app"
+  },
+  "metadata": {
+    "description": "Polypane, the browser for web developers, for AI agents.",
+    "version": "32.0.0"
+  },
+  "plugins": [
+    {
+      "name": "polypane",
+      "source": "./plugins/polypane",
+      "description": "Connect to Polypane's MCP server, with the Polypane agent skill."
+    }
+  ]
+}

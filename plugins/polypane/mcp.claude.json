@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "polypane": {
+      "command": "sh",
+      "args": [
+        "-c",
+        "for p in \"/Applications/Polypane.app/Contents/MacOS/Polypane\" \"$HOME/Applications/Polypane.app/Contents/MacOS/Polypane\" \"/opt/Polypane/polypane\"; do [ -x \"$p\" ] && exec \"$p\" \"$@\"; done; echo \"Polypane is not installed in its default location: install it from polypane.app, or use Connect an AI tool in Polypane.\" >&2; exit 1",
+        "polypane",
+        "--mcp",
+        "--client=claude-code",
+        "--ozone-platform=headless"
+      ]
+    }
+  }
+}
