@@ -1,0 +1,7 @@
+#!/bin/sh
+# Starts Polypane's MCP server from Polypane's default location on macOS and Linux. Windows uses polypane.cmd.
+for p in "/Applications/Polypane.app/Contents/MacOS/Polypane" "$HOME/Applications/Polypane.app/Contents/MacOS/Polypane" "/opt/Polypane/polypane"; do
+  [ -x "$p" ] && exec "$p" "$@" --ozone-platform=headless
+done
+echo "Polypane is not installed in its default location: install it from polypane.app, or use Connect an AI tool in Polypane." >&2
+exit 1
