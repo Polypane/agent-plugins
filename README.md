@@ -10,7 +10,6 @@ Each plugin connects the agent to Polypane's built-in MCP server and, where the 
 - **Claude Desktop**: download `polypane.mcpb` from the [latest release](https://github.com/Polypane/agent-plugins/releases/latest) and open it.
 - **Cursor**: add this repo as a plugin marketplace, then install the Polypane plugin.
 - **Codex**: add this repo as a plugin marketplace, then install the Polypane plugin.
-- **VS Code**: search `@mcp polypane` in the Extensions view.
 
 ## Requirements
 
