@@ -9,7 +9,7 @@
   },
   "homepage": "https://polypane.app/docs/automation/",
   "repository": "https://github.com/Polypane/agent-plugins.git",
-  "license": "MIT",
+  "license": "LicenseRef-Proprietary",
   "keywords": [
     "polypane",
     "browser",
