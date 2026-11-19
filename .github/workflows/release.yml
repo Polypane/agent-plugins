@@ -24,6 +24,17 @@ jobs:
             exit 1
           fi
 
+      # A published version can't be changed, and its hash would no longer match a rebuilt bundle.
+      - name: Check the version isn't in the MCP Registry yet
+        if: vars.PUBLISH_TO_MCP_REGISTRY == 'true'
+        run: |
+          version=$(node -p "require('./server.json').version")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "https://registry.modelcontextprotocol.io/v0/servers/app.polypane%2Fpolypane/versions/$version")
+          if [ "$status" = "200" ]; then
+            echo "Version $version is already in the MCP Registry: bump the version instead of moving the tag" >&2
+            exit 1
+          fi
+
       - name: Build the Claude Desktop bundle
         run: npm run pack
 

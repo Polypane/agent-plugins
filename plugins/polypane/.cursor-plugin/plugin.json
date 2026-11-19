@@ -1,7 +1,7 @@
 {
   "name": "polypane",
   "displayName": "Polypane",
-  "version": "32.0.0",
+  "version": "32.0.1",
   "description": "Build, check and fix websites in Polypane, the browser for web developers: every viewport at once, with its accessibility, layout, meta and performance checks. Needs Polypane, which has a free trial.",
   "author": {
     "name": "Polypane",

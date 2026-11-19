@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Polypane, the browser for web developers, for AI agents.",
-    "version": "32.0.0"
+    "version": "32.0.1"
   },
   "plugins": [
     {

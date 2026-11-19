@@ -8,11 +8,11 @@
     "url": "https://github.com/Polypane/agent-plugins",
     "source": "github"
   },
-  "version": "32.0.0",
+  "version": "32.0.1",
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/Polypane/agent-plugins/releases/download/v32.0.0/polypane.mcpb",
+      "identifier": "https://github.com/Polypane/agent-plugins/releases/download/v32.0.1/polypane.mcpb",
       "fileSha256": "TO-BE-FILLED-BY-THE-RELEASE",
       "transport": {
         "type": "stdio"
