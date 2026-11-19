@@ -16,8 +16,8 @@ Each plugin connects the agent to Polypane's built-in MCP server and, where the 
 
 You need [Polypane](https://polypane.app) 32 or newer, with Settings → Automation turned on. New to Polypane? [Start a free trial](https://polypane.app).
 
-The plugins run Polypane from its default location: `/Applications/Polypane.app` (or `~/Applications`) on macOS and `/opt/Polypane` on Linux. The Claude Desktop bundle also covers Windows (`C:\Program Files\Polypane`).
+The plugins run Polypane from its default location: `/Applications/Polypane.app` (or `~/Applications`) on macOS, `/opt/Polypane` on Linux and `C:\Program Files\Polypane` on Windows.
 
-The Claude Code, Cursor and Codex plugins cover macOS and Linux for now. On Windows, with an AppImage or with Polypane in another location, use "Connect an AI tool" in Polypane's Automation settings, which writes the exact path for every client.
+The Claude Code plugin and the Claude Desktop bundle work on macOS, Linux and Windows. The Cursor and Codex plugins cover macOS and Linux for now. On Windows with those two, with an AppImage or with Polypane in another location, use "Connect an AI tool" in Polypane's Automation settings, which writes the exact path for every client.
 
 Use a plugin or "Connect an AI tool", not both: with both active, every Polypane tool shows up twice.
