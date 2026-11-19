@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check the tag matches the manifests
+        run: |
+          version=$(node -p "require('./server.json').version")
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME doesn't match version $version" >&2
+            exit 1
+          fi
+
+      - name: Build the Claude Desktop bundle
+        run: npm run pack
+
+      - name: Point server.json at this release's bundle
+        run: |
+          node -e "
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const server = JSON.parse(fs.readFileSync('server.json', 'utf8'));
+            const [bundle] = server.packages;
+            bundle.identifier = 'https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/polypane.mcpb';
+            bundle.fileSha256 = crypto.createHash('sha256').update(fs.readFileSync('dist/polypane.mcpb')).digest('hex');
+            fs.writeFileSync('server.json', JSON.stringify(server, null, 2) + '\n');
+          "
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/polypane.mcpb server.json --title "Polypane $GITHUB_REF_NAME" --generate-notes
+
+      - name: Publish to the MCP Registry
+        if: vars.PUBLISH_TO_MCP_REGISTRY == 'true'
+        run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher login dns --domain polypane.app --private-key "${{ secrets.MCP_REGISTRY_PRIVATE_KEY }}"
+          ./mcp-publisher publish
