@@ -53,5 +53,5 @@ jobs:
           MCP_PRIVATE_KEY: ${{ secrets.MCP_PRIVATE_KEY }}
         run: |
           curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
-          ./mcp-publisher login dns --domain polypane.app
+          ./mcp-publisher login dns --domain polypane.app --private-key "$MCP_PRIVATE_KEY"
           ./mcp-publisher publish
