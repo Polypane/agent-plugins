@@ -67,6 +67,18 @@ const registry = read('server.json');
 need('server.json', registry, ['name', 'description', 'version', 'packages']);
 versions.add(registry.version);
 
+const gemini = read('gemini-extension.json');
+need('gemini-extension.json', gemini, ['name', 'version', 'mcpServers']);
+versions.add(gemini.version);
+const geminiCommand = gemini.mcpServers?.polypane?.command ?? '';
+exists('x', geminiCommand.replace('${extensionPath}${/}', '').replaceAll('${/}', '/'));
+if (!gemini.mcpServers?.polypane?.args?.includes('--mcp')) {
+  errors.push("gemini-extension.json: the polypane server doesn't pass --mcp");
+}
+if (!fs.existsSync('skills/polypane/SKILL.md')) {
+  errors.push('The Gemini CLI skill copy is missing: sync the skill.');
+}
+
 if (!fs.existsSync(`${plugin}/skills/polypane/SKILL.md`)) {
   errors.push('The skill is missing: run npm run sync-skill.');
 }

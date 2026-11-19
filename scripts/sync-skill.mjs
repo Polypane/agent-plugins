@@ -10,7 +10,11 @@ if (!source) {
   console.error('✗ Set SKILL_SOURCE to the SKILL.md that ships with Polypane.');
   process.exit(1);
 }
-const target = path.join(root, 'plugins', 'polypane', 'skills', 'polypane', 'SKILL.md');
+// The plugins read the skill from the plugin folder, the Gemini CLI extension from skills/ at the repo root.
+const targets = [
+  path.join(root, 'plugins', 'polypane', 'skills', 'polypane', 'SKILL.md'),
+  path.join(root, 'skills', 'polypane', 'SKILL.md'),
+];
 
 const CLI_LINE = 'The same tools work from a shell, with the command for this install: `polypane --mcp`.';
 const PLUGIN_CLI_LINE =
@@ -23,14 +27,15 @@ if (!skill.includes(CLI_LINE)) {
 const pluginSkill = skill.replace(CLI_LINE, PLUGIN_CLI_LINE);
 
 if (process.argv.includes('--check')) {
-  const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
-  if (current !== pluginSkill) {
+  if (targets.some(target => !fs.existsSync(target) || fs.readFileSync(target, 'utf8') !== pluginSkill)) {
     console.error("✗ The plugins' skill is out of date.");
     process.exit(1);
   }
   console.log("✓ The plugins' skill is up to date");
 } else {
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, pluginSkill);
+  targets.forEach(target => {
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, pluginSkill);
+  });
   console.log(`Copied the skill from ${source}`);
 }
