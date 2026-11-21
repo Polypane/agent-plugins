@@ -9,7 +9,7 @@ Each plugin connects the agent to Polypane's built-in MCP server and, where the 
 - **Claude Code**: `/plugin marketplace add Polypane/agent-plugins`, then `/plugin install polypane@polypane`.
 - **Claude Desktop**: download `polypane.mcpb` from the [latest release](https://github.com/Polypane/agent-plugins/releases/latest) and open it.
 - **Cursor**: use the "Add to Cursor" button in the [Automation docs](https://polypane.app/docs/automation/#install-from-your-ai-tool).
-- **Codex**: `codex plugin marketplace add Polypane/agent-plugins`, then install Polypane from `/plugins`.
+- **Codex**: `codex plugin marketplace add Polypane/agent-plugins`, then `codex plugin add polypane@polypane` (or install Polypane from `/plugins`), and start a new session.
 - **Gemini CLI**: `gemini extensions install https://github.com/Polypane/agent-plugins`.
 
 ## Requirements
